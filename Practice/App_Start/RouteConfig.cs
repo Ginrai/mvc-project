@@ -12,7 +12,12 @@ namespace Practice
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+           // routes.MapMvcAttributeRoutes();
+           /* Alternatively:
+            * routes.MapRoute("MoviesByReleastDate", "movie/released/{year}/{month}",
+                new { controller = "Movie", action = "ByReleaseDate" }, //ByReleaseDate refers to method in Movie Controller
+                new { year = "\\d{4}", month = "\\d{2}" }); //Routes need to be defined from more specific to more general.
+            */       
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

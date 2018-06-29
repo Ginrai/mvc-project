@@ -1,0 +1,23 @@
+﻿@model Practice.Models.Customer
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>@Model.Name</h2>
+
+
+@if (Model.Count.Count() == 0)
+{
+    <p> Not very popular.</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Count)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
