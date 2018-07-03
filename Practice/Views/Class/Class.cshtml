@@ -9,12 +9,7 @@
 <h2>@ViewBag.Title</h2>
 
 
-<div id="message"></div>
-@*<input id="btn" type="button" value="Select" onclick="classData()" />*@
 <button class="whatever">Select</button>
-@*<iframe id="display">
-        <div id="replace"></div>
-    </iframe>*@
 
 <!-- HTML HELPER EXAMPLE-->
 @Html.DropDownListFor(m => m.Id, new SelectList(Model.classes, "Id", "Type"), "--Select a Class--", new { @id = "dropdown"})
@@ -22,7 +17,7 @@
 @Html.Partial("_partial")
 
 
-<script type="text/javascript">
+<script type="text/javascript"> // Way fucking easier in Angular... great
     $(document).ready(function () {
         $('.whatever').on('click', function (evt) {
             evt.preventDefault;
@@ -32,14 +27,16 @@
         
             var dropdown = $("#dropdown").val();
             var id = parseInt(dropdown);
-           
+
             $.ajax({
                 type: "POST",
                 url: "@Url.Action("ReloadClass","Class")",
                 data: "{ id: " + id + "}",
                 contentType: "application/json",
                 success: function (data) {
-                    $partial.replaceWith(data);
+
+                    $partial.empty();
+                    $partial.append(data);
 
                 },
                 error: function (data) {

@@ -25,53 +25,31 @@ namespace Practice.Controllers
             return View(_class);
         }
 
-        public ActionResult LoadDPartialView()
+
+        public ActionResult ReloadClass(int id)
         {
-
-            return PartialView("_Dragoon");
-        }
-
-        public ActionResult LoadMPartialView()
-        {
-
-            return PartialView("_Monk");
-        }
-
-        public ActionResult LoadNPartialView()
-        {
-
-            return PartialView("_Ninja");
-        }
-
-        public ActionResult LoadSPartialView()
-        {
-
-            return PartialView("_Samurai");
-        }
-
-        public JsonResult ReloadClass(int id)
-        {
-            string test = "";
-            var partial = LoadDPartialView() ;
+          
             switch (id)
             {
                 case 1:
-                    partial = LoadDPartialView();
-                   
-                    break;
+
+                    return PartialView("_Dragoon");
+                    
                 case 2:
-                    test = "Oh Boi";
-                    break;
+                    return PartialView("_Monk");
+                  
                 case 3:
-                    partial = LoadNPartialView();
-                    break;
+                    return PartialView("_Ninja");
+
+                   
                 case 4:
-                    partial = LoadSPartialView();
-                    break;
+                    return PartialView("_Samurai");
+
+                    
                 default:
-                    break;
+                    return PartialView("_partial");
+                    
             }
-            return Json(partial);
         }
 
     }
