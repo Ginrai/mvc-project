@@ -1,0 +1,66 @@
+﻿@model Practice.Models.Class
+@{
+ 
+    ViewBag.Title = "Choose your class: ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script type="text/javascript">
+    function classData() {
+
+        switch (document.getElementById("classSelect").value) {
+
+            case "1":
+                getit = 1;
+                //window.open('LoadDPartialView', '_self')
+                document.getElementById("message").innerHTML = "You Selected Dragoon!";
+
+                break;
+            case "2":
+                window.open('LoadMPartialView', '_self')
+                document.getElementById("message").innerHTML = "You Selected Monk!";
+
+                break;
+            case "3":
+                window.open('LoadNPartialView', '_self')
+                document.getElementById("message").innerHTML = "You Selected Ninja!";
+                break;
+            case "4":
+                window.open('LoadSPartialView', '_self')
+                document.getElementById("message").innerHTML = "You Selected Samurai!";
+                break;
+
+            default:
+                document.getElementById("message").innerHTML = "Please Select a Class!";
+        }
+    }
+
+</script>
+
+
+
+<select id="classSelect">
+    <option value="0">--Select Class--</option>
+    <option value="1"> Dragoon </option>
+    <option value="2"> Monk </option>
+    <option value="3"> Ninja </option>
+    <option value="4"> Samurai </option>
+</select>
+
+<div id="message"></div>
+<input id="btn" type="button" value="Select" onclick="classData()" />
+@*<iframe id="display">
+        <div id="replace"></div>
+    </iframe>*@
+
+<!-- HTML HELPER EXAMPLE-->
+@Html.DropDownListFor(m => m.Id, new SelectList(Model.classes, "Id", "Type"), "--Select a Class--", "Help")
+
+<!--Ajax Insertion Example-->
+@Ajax.ActionLink("Load Partial View", "LoadDPartialView", "Class",
+    new AjaxOptions() { UpdateTargetId = "replace", HttpMethod = "Get", InsertionMode = InsertionMode.Replace })
+
+
+

@@ -275,6 +275,11 @@
     <Content Include="Views\Class\Class.cshtml" />
     <Content Include="Views\Customer\Customer.cshtml" />
     <Content Include="Views\Class\_Dragoon.cshtml" />
+    <Content Include="Views\Class\_Monk.cshtml" />
+    <Content Include="Views\Class\_Ninja.cshtml" />
+    <Content Include="Views\Class\_Samurai.cshtml" />
+    <Content Include="Views\Class\Class_backup.cshtml" />
+    <Content Include="Views\Class\_partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

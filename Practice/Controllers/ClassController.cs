@@ -17,20 +17,62 @@ namespace Practice.Controllers
 
             _class.classes = new List<Class>
             {
-                new Class { Type = "Dragoon", Id = 0 },
-                new Class { Type = "Ninja", Id = 1 },
-                new Class { Type = "White Mage", Id = 2 },
-                new Class {Type = "FcknMonk", Id = 3 }
+                new Class { Type = "Dragoon", Id = 1 },
+                new Class { Type = "Monk", Id = 2 },
+                new Class { Type = "Ninja", Id = 3 },
+                new Class {Type = "Samurai", Id = 4 }
             };
             return View(_class);
         }
 
-        public ActionResult LoadPartialView()
+        public ActionResult LoadDPartialView()
         {
 
             return PartialView("_Dragoon");
         }
 
+        public ActionResult LoadMPartialView()
+        {
+
+            return PartialView("_Monk");
+        }
+
+        public ActionResult LoadNPartialView()
+        {
+
+            return PartialView("_Ninja");
+        }
+
+        public ActionResult LoadSPartialView()
+        {
+
+            return PartialView("_Samurai");
+        }
+
+        public JsonResult ReloadClass(int id)
+        {
+            string test = "";
+            var partial = LoadDPartialView() ;
+            switch (id)
+            {
+                case 1:
+                    partial = LoadDPartialView();
+                   
+                    break;
+                case 2:
+                    test = "Oh Boi";
+                    break;
+                case 3:
+                    partial = LoadNPartialView();
+                    break;
+                case 4:
+                    partial = LoadSPartialView();
+                    break;
+                default:
+                    break;
+            }
+            return Json(partial);
+        }
 
     }
 }
